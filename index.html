@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gantt Graphics</title>
 </head>
+
 <body>
-  <h1>Hello World!</h1>
+  <!-- References
+    Kute.js: https://thednp.github.io/kute.js/svgMorph.html
+    Haikei App for shapes: https://app.haikei.app/
+    Tutorial: https://www.youtube.com/watch?v=lPJVi797Uy0&list=WL&index=5&ab_channel=Fireship
+  -->
+  <svg id="visual" viewBox="0 0 900 900" width="900" height="900" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+    <g transform="translate(396.50958373145767 440.6235568838073)">
+      <path id='blob1'
+        d="M267.2 -217.7C350 -184.3 423.5 -92.2 394 -29.5C364.5 33.1 232 66.3 149.1 106.5C66.3 146.6 33.1 193.8 -49.7 243.5C-132.6 293.2 -265.2 345.5 -289.3 305.3C-313.5 265.2 -229.2 132.6 -227.4 1.8C-225.6 -128.9 -306.2 -257.9 -282 -291.2C-257.9 -324.5 -128.9 -262.3 -18.4 -243.9C92.2 -225.5 184.3 -251 267.2 -217.7"
+        fill="#000000"></path>
+    </g>
+    <g transform="translate(484.69620527886383 464.83416405276034)" style="visibility: hidden;">
+      <path id='blob2'
+        d="M256.7 -254.2C318.7 -194.7 345.3 -97.3 363 17.6C380.6 132.6 389.2 265.2 327.2 288.6C265.2 312 132.6 226.3 6 220.4C-120.7 214.4 -241.4 288.2 -328.2 264.8C-415 241.4 -468 120.7 -435.7 32.3C-403.4 -56.1 -285.9 -112.2 -199 -171.7C-112.2 -231.2 -56.1 -294.1 20.6 -314.7C97.3 -335.3 194.7 -313.7 256.7 -254.2"
+        fill="#000000"></path>
+    </g>
+  </svg>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/kute.js/2.0.0/kute.min.js"></script>
+  <script>
+    const tween = KUTE.fromTo(
+      '#blob1',
+      { path: '#blob1' },
+      { path: '#blob2' },
+      { repeat: 999, duration: 4000, yoyo: true}
+    )
+    tween.start()
+  </script>
 </body>
 </html>
