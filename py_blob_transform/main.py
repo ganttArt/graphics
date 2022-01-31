@@ -31,7 +31,8 @@ def create_frame(image_one, image_two):
   width = dimensions[1]
 
   for i in range(1, height - 1):
-    print(f'Row {i} of {height - 1}')
+    if i % 200 == 0:
+      print(f'Row {i} of {height - 1}')
     for j in range(1, width - 1):
       if change_color(i, j, image_one, image_two):
         # print('new frame', new_frame[i][j])
@@ -41,14 +42,29 @@ def create_frame(image_one, image_two):
   int_array = new_frame.astype(np.uint8)
   return Image.fromarray(int_array)
 
+def create_many_images(image_one, image_two):
+  file_id = 1000001
+  count = 1
+  while True:
+    if np.array_equal(image_one, image_two):
+      break
+    print("Frame #", count)
+    FRAME = create_frame(image_one, image_two)
+    save_file(FRAME, f'{file_id}.png')
+    file_id += 1
+    count += 1
+    image_one = create_np_array(FRAME)
+  return
+
 def save_file(pil_image, filename):
   pil_image.save(f'{filename}')
-
+  return
 
 if __name__ == "__main__":
   IMAGE_ONE = create_np_array(Image.open("assets/pony.png"))
   # print('image one', IMAGE_ONE)
   IMAGE_TWO = create_np_array(Image.open("assets/tri.png"))
   # print('image two', IMAGE_TWO)
-  FRAME = create_frame(IMAGE_ONE, IMAGE_TWO)
-  save_file(FRAME, 'new.png')
+  create_many_images(IMAGE_ONE, IMAGE_TWO)
+  # FRAME = create_frame(IMAGE_ONE, IMAGE_TWO)
+  # save_file(FRAME, 'new.png')
